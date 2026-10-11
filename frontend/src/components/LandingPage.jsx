@@ -1,2 +1,52 @@
-const roles=[['student','Students','Learn at a pace that works for you.'],['teacher','Teachers','Teach, assess and support with clarity.'],['institute','Institutes','Bring the learning community together.']]
-export function LandingPage({onAuth}){return <div className="landing"><nav><button className="brand" onClick={()=>scrollTo(0,0)}><b>C</b> CogniBridge</button><div><button className="text" onClick={()=>onAuth('student')}>Log in</button><button className="primary" onClick={()=>onAuth('student')}>Get started →</button></div></nav><section className="hero"><div><label>INCLUSIVE LEARNING, DESIGNED TO ADAPT</label><h1>Every learner deserves a path that fits.</h1><p>CogniBridge brings live classrooms, collaborative learning rooms and adaptive micro-lessons into one calm, connected learning environment.</p><button className="primary" onClick={()=>onAuth('student')}>Explore your learning space →</button></div><div className="preview"><small>MY LEARNING SPACE</small><p>YOUR NEXT CLASS</p><h2>Understanding ecosystems</h2><div><span>Today · 10:30 AM</span><button>Join class</button></div><hr/><small>WEEKLY PROGRESS</small><strong>68%</strong><i><em/></i></div></section><section className="features"><article><b>01</b><h3>Live classrooms</h3><p>A space to connect, learn and ask questions in real time.</p></article><article><b>02</b><h3>Adaptive content</h3><p>Micro-lessons that respond to individual learning patterns.</p></article><article><b>03</b><h3>Learning rooms</h3><p>Focused peer study spaces without competitive pressure.</p></article></section><section className="roles"><label>ONE CONNECTED PLATFORM</label><h2>Designed for every part of the learning community.</h2><div>{roles.map(([id,name,copy],i)=><button key={id} onClick={()=>onAuth(id)}><b>0{i+1}</b><h3>{name}</h3><p>{copy}</p><span>View workspace →</span></button>)}</div></section><footer>CogniBridge <span>Inclusive learning infrastructure for modern institutions.</span></footer></div>}
+const roles = [
+  ['student', 'Students', 'Learn at a pace that works for you.'],
+  ['teacher', 'Teachers', 'Teach, assess and support with clarity.'],
+  ['institute', 'Institutes', 'Bring the learning community together.'],
+]
+
+export function LandingPage({ onAuth }) {
+  return (
+    <div className="landing">
+      <nav>
+        <button className="brand" onClick={() => scrollTo(0, 0)}><b>C</b> CogniBridge</button>
+        <div>
+          <button className="text" onClick={() => onAuth('student')}>Log in</button>
+          <button className="primary" onClick={() => onAuth('student')}>Get started →</button>
+        </div>
+      </nav>
+      <section className="hero">
+        <div>
+          <label>INCLUSIVE LEARNING, DESIGNED TO ADAPT</label>
+          <h1>Every learner deserves a path that fits.</h1>
+          <p>CogniBridge brings live classrooms, collaborative learning rooms and adaptive micro-lessons into one calm, connected learning environment.</p>
+          <button className="primary" onClick={() => onAuth('student')}>Explore your learning space →</button>
+        </div>
+        <div className="preview">
+          <small>MY LEARNING SPACE</small>
+          <p>YOUR NEXT CLASS</p>
+          <h2>Understanding ecosystems</h2>
+          <div><span>Today · 10:30 AM</span><button>Join class</button></div>
+          <hr />
+          <small>WEEKLY PROGRESS</small><strong>68%</strong><i><em /></i>
+        </div>
+      </section>
+      <section className="features">
+        <article><b>01</b><h3>Live classrooms</h3><p>A space to connect, learn and ask questions in real time.</p></article>
+        <article><b>02</b><h3>Adaptive content</h3><p>Micro-lessons that respond to individual learning patterns.</p></article>
+        <article><b>03</b><h3>Learning rooms</h3><p>Focused peer study spaces without competitive pressure.</p></article>
+      </section>
+      <section className="roles">
+        <label>ONE CONNECTED PLATFORM</label>
+        <h2>Designed for every part of the learning community.</h2>
+        <div>
+          {roles.map(([id, name, copy], index) => (
+            <button key={id} onClick={() => onAuth(id)}>
+              <b>0{index + 1}</b><h3>{name}</h3><p>{copy}</p><span>View workspace →</span>
+            </button>
+          ))}
+        </div>
+      </section>
+      <footer>CogniBridge <span>Inclusive learning infrastructure for modern institutions.</span></footer>
+    </div>
+  )
+}
