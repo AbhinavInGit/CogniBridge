@@ -1,5 +1,22 @@
 import {useState} from 'react'
-function Shell({title,sub,onHome,children}){return <div className="shell"><aside><button className="brand light"><b>C</b> CogniBridge</button><small>WORKSPACE</small><button className="side active">Overview</button><button className="side">Schedule</button><button className="side">Learning</button><button className="side">Community</button><button className="side bottom" onClick={onHome}>← Back to home</button></aside><section className="dash"><header><div><label>GOOD MORNING</label><h1>{title}</h1><p>{sub}</p></div><button className="text" onClick={onHome}>Exit demo</button></header>{children}</section></div>}
+
+function Shell({title,sub,onHome,children})
+{
+    return <div className="shell">
+        <aside>
+        <button className="brand light"><b>C</b> CogniBridge</button>
+        <small>WORKSPACE</small>
+        <button className="side active">Overview</button>
+        
+        <button className="side">Schedule</button>
+        <button className="side">Learning</button>
+        <button className="side">Community</button>
+        <button className="side bottom" onClick={onHome}>← Back to home</button></aside>
+        <section className="dash">
+        <header><div><label>GOOD MORNING</label>
+        <h1>{title}</h1><p>{sub}</p></div>
+        <button className="text" onClick={onHome}>
+        Exit demo</button></header>{children}</section></div>}
 const Card=({value,text})=><div className="stat"><strong>{value}</strong><span>{text}</span></div>
 export function StudentDashboard(p){return <Shell {...p} title="Your learning space" sub="A steady week starts with one focused step."><div className="stats"><Card value="04" text="Enrolled courses"/><Card value="02" text="Classes this week"/><Card value="68%" text="Weekly progress"/></div><div className="grid"><section className="panel classes"><label>UP NEXT</label><h2>Upcoming classes</h2><Class name="Understanding ecosystems" detail="Biology 101 · Dr. Meera Shah" time="Today · 10:30 AM" action={()=>p.onNotice('Joining the live classroom…')}/><Class name="Algebra: Linear equations" detail="Mathematics · Arjun Nair" time="16 Oct · 11:00 AM"/></section><section className="panel mint"><label>COLLABORATIVE LEARNING</label><h2>Start a learning room</h2><p>Create a focused space to study alongside your peers.</p><button className="primary wide" onClick={()=>p.onNotice('Your learning room is ready to share.')}>+ Start a room</button></section><section className="panel courses"><label>KEEP GOING</label><h2>Enrolled courses</h2>{[['Biology 101','68'],['Mathematics','42'],['English literature','81']].map(x=><div className="course" key={x[0]}><span>{x[0]}</span><b>{x[1]}%</b><i><em style={{width:x[1]+'%'}}/></i></div>)}</section><section className="panel dark"><label>YOUR LEARNING INSIGHT</label><h2>Short sessions are working well for you.</h2><p>Your next personalised micro-lesson is ready when you are.</p><button className="outline" onClick={()=>p.onNotice('Personalised micro-lesson started')}>Begin micro-lesson</button></section></div></Shell>}
 function Class({name,detail,time,action}){return <div className="class"><b>14<br/><small>OCT</small></b><div><strong>{name}</strong><span>{detail}</span></div><span>{time}</span>{action&&<button className="primary" onClick={action}>Join class</button>}</div>}
